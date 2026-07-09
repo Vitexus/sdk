@@ -1,0 +1,8 @@
+php-open-telemetry-sdk (1.14.1~git20260706.00a5cda-1) UNRELEASED; urgency=medium
+
+  * Initial packaging of open-telemetry/sdk (git snapshot 00a5cda,
+    eight commits past tag 1.14.0, matching the exact version resolved
+    by the OpenTelemetry PHP SDK's composer.lock), packaged for
+    MultiFlexi's OTLP metrics exporter (multiflexi-cli telemetry:test).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Thu, 09 Jul 2026 13:32:31 +0200

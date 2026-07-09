@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
+PKG_SOURCE  := $(shell jq -r '.name' composer.json)
+PKG_TYPE    := $(shell jq -r '.type // "library"' composer.json)
+
+DESTDIR := debian/php-open-telemetry-sdk/usr/share/php/OpenTelemetry/SDK
+
+%:
+	dh $@ --with phpcomposer
+
+override_dh_install:
+	dh_install
+	phpab -o $(DESTDIR)/autoload.php $(DESTDIR)
+	echo "require_once __DIR__.'/Common/Util/functions.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/Logs/Exporter/_register.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/Metrics/MetricExporter/_register.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/Propagation/_register.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/Trace/SpanExporter/_register.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/Common/Dev/Compatibility/_load.php';" >> $(DESTDIR)/autoload.php
+	echo "require_once __DIR__.'/_autoload.php';" >> $(DESTDIR)/autoload.php
+	cat debian/installedversions.php >> $(DESTDIR)/autoload.php
+	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" $(DESTDIR)/autoload.php
+	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" $(DESTDIR)/autoload.php
+	sed -i "s|'library'|'$(PKG_TYPE)'|g" $(DESTDIR)/autoload.php
+
+override_dh_auto_test:
+	appstreamcli validate --pedantic --no-net \
+	    debian/php-open-telemetry-sdk.metainfo.xml

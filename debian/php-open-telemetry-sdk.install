@@ -1,0 +1,8 @@
+*.php usr/share/php/OpenTelemetry/SDK/
+Logs usr/share/php/OpenTelemetry/SDK/
+Metrics usr/share/php/OpenTelemetry/SDK/
+ConfigEnv usr/share/php/OpenTelemetry/SDK/
+Common usr/share/php/OpenTelemetry/SDK/
+Resource usr/share/php/OpenTelemetry/SDK/
+Propagation usr/share/php/OpenTelemetry/SDK/
+Trace usr/share/php/OpenTelemetry/SDK/

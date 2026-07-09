@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="generic">
+  <id>cz.vitexsoftware.php-open-telemetry-sdk</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>Apache-2.0</project_license>
+  <name>OpenTelemetry SDK for PHP</name>
+  <summary>SDK for OpenTelemetry PHP</summary>
+  <description>
+    <p>
+      Reference implementation of the OpenTelemetry PHP API: trace,
+      metric, and log exporters, span/metric/log processors, resource
+      detection, sampling, and configuration. Used by MultiFlexi's OTLP
+      metrics exporter.
+    </p>
+  </description>
+  <icon type="stock">package-x-generic</icon>
+  <url type="homepage">https://github.com/open-telemetry/opentelemetry-php</url>
+</component>

@@ -1,0 +1,41 @@
+Source: php-open-telemetry-sdk
+Section: php
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ pkg-php-tools,
+ php-cli,
+ jq,
+ phpab,
+ appstream,
+Standards-Version: 4.7.0
+Homepage: https://github.com/open-telemetry/opentelemetry-php
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/Vitexus/sdk.git
+Vcs-Browser: https://github.com/Vitexus/sdk
+
+Package: php-open-telemetry-sdk
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ php-common,
+ php-open-telemetry-api,
+ php-open-telemetry-context,
+ php-open-telemetry-sem-conv,
+ php-nyholm-psr7-server,
+ php-http-discovery,
+ php-psr-http-client,
+ php-psr-http-factory,
+ php-psr-http-message,
+ php-psr-log,
+ php-ramsey-uuid,
+ php-symfony-polyfill-mbstring,
+ php-symfony-polyfill-php82,
+ php-tbachert-spi,
+ composer,
+Description: SDK for OpenTelemetry PHP
+ Reference implementation of the OpenTelemetry PHP API: trace/metric/log
+ exporters, span/metric/log processors, resource detection, sampling
+ and configuration. Used by MultiFlexi's OTLP metrics exporter.
